@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:50:09 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/26 21:34:04 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/26 21:58:30 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <stdarg.h>
 # include "../libft/libft.h"
 
-typedef struct s_flags
-{
-}				t_flags;
-
+// typedef struct s_flags
+// {
+// }				t_flags;
+//
 typedef struct s_data
 {
 	int	errctl;
@@ -31,9 +31,9 @@ void	aux_printc(const char c, t_data *data);
 void	aux_printstr(const char *str, t_data *data);
 
 void	convert_nbr(int nbr, t_data *data);
-void	convert_nbrbase(unsigned int nbr, int base, t_data *data);
-void	convert_ptrtoint(intptr_t ptr, t_data *data);
-
-void	parse_format(const char *str, char format, t_data *data, va_list args);
+// void	convert_nbrbase(unsigned int nbr, int base, t_data *data);
+// void	convert_ptrtoint(void *ptr, t_data *data);
+//
+ void	parse_format(const char *str, char format, t_data *data, va_list args);
 int		ft_printf(const char *, ...);
 #endif
