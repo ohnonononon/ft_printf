@@ -7,5 +7,7 @@ SRC = ft_printf.c tools.c main.c
 
 TEST = test_suite
 
-all:
-	gcc -L $(INC) $(SRC) -o $(TEST) 
+LIBFT = ../libft/
+
+all: $(LIBFT)
+	gcc -o $(TEST) $(SRC) -L. -lft
