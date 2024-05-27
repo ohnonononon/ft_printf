@@ -1,2 +1,2 @@
 *.a
-./test_suite
+test_suite
