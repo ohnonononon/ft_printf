@@ -6,11 +6,18 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:53:18 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/26 21:01:41 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/27 12:30:49 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+t_data	init_data(t_data data)
+{
+	data.errctl = 0;
+	data.lenght = 0;
+	return (data);
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -19,18 +26,20 @@ int	ft_printf(const char *str, ...)
 	int		i;
 
 	i = 0;
-	data = (t_data){};
+	data = init_data(data);
 	va_start(args, str);
 	while (str[i] != '\0' && data.errctl != -1)
 	{
 		if (str[i] != '%')
 			aux_printc(str[i++], &data);
 		else if (str[i] == '%')
+		{
 			parse_format(str, str[++i], &data, args);
+			i++;
+		}
 		if (data.errctl == -1)
 			return (data.errctl);
 	}
-	
 	va_end(args);
 	return (data.lenght);
 }

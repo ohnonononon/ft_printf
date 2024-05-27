@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:11:54 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/26 21:48:53 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/27 12:37:33 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,50 @@
 void	aux_printc(const char c, t_data *data)
 {
 	data->errctl = write(1, &c, 1);
-	data->lenght++;
+	if (data->errctl == 1)
+		data->lenght++;
 }
 
 void	aux_printstr(const char *str, t_data *data)
 {
-	while (*str && data->errctl < -1)
+	if (str == NULL)
+		aux_printstr("(null)", data);
+	else 
 	{
-		data->errctl = write(1, str, 1);
-		data->lenght++;
+		if (data->errctl == -1)
+			return ;
+		while (*str && data->errctl >= 0)
+		{
+			data->errctl = write(1, str++, 1);
+			if (data->errctl == 1)
+				data->lenght++;
+		}
 	}
 }
-/*
-void	convert_nbr(int nb, t_data *data)
-{
 
-}
-void	convert_nbrbase(unsigned int nbr, int base, t_data *data)
+void	parse_format(const char *str, char format, t_data *dt, va_list args)
 {
-	char	*str;
-	long	nb;
+	int	len;
 
-	str = NULL;
-	nb = nbr;
-	if (base == 10)
-		str = "0123456789";
-	else if (base == 16)
-		str = "0123456789abcdef";
-	else if (base == -16)
-		str = "0123456789ABCDEF";
-}
-*/
-
-void	parse_format(const char *str, char format, t_data *data, va_list args)
-{
-	if (data->errctl == -1)
+	len = 0;
+	if (dt->errctl == -1)
 		return ;
 	if (format == 'c')
-		aux_printc(va_arg(args, int), data);
+		aux_printc(va_arg(args, int), dt);
 	else if (format == 's')
-		aux_printstr(va_arg(args, char *), data);
-	// else if (format == 'i' || format == 'd')
-	// 	convert_nbr(va_arg(args, int), data);
-	// else if (format == 'u')
-	// 	convert_nbrbase(va_arg(args, unsigned int), 10, data);
-	// else if (format == 'x')
-	// 	convert_nbrbase(va_arg(args, unsigned int), 16, data);
-	// else if (format == 'X')
-	// 	convert_nbrbase(va_arg(args, unsigned int), -16, data);
+		aux_printstr(va_arg(args, char *), dt);
+	else if (format == 'i' || format == 'd')
+		convert_nbr(va_arg(args, int), dt);
+	else if (format == 'u')
+		convert_nbrbase(va_arg(args, unsigned int), "0123456789", 0, dt);
+	else if (format == 'x')
+		convert_nbrbase(va_arg(args, unsigned int), "0123456789abcdef", 0, dt);
+	else if (format == 'X')
+		convert_nbrbase(va_arg(args, unsigned int), "0123456789ABCDEF", 0, dt);
 	// else if (format == 'p')
-	// 	convert_ptrtoint(va_arg(args, void *), data);
+	// 	convert_ptrtoint(va_arg(args, void *), dt);
 	// else if (format == '%')
-	// 	aux_printc('%', data);
+	// 	aux_printc('%', dt);
 	else
-		data->errctl = -1;
+		dt->errctl = -1;
 }
