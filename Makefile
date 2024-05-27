@@ -9,8 +9,13 @@ TEST = test_suite
 all: $(LIBFT)
 	gcc -o $(TEST) $(SRC) -L. -lft
 
-debug:
+db:
 	gcc -o $(TEST) $(SRC) -L. -lft -g
+	dbg ./$(TEST)
 
 clean:
 	rm $(TEST)
+
+re: clean all
+
+.PHONY: re clean db all
