@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:09:31 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 10:24:35 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 12:59:53 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
+
+void	ptr_mod(void *p)
+{
+	char	*tittle = "\nTEST FOR\t";
+
+	if (!p)
+		p = 0;
+	printf("%s\t<<%p>>\n", tittle, p);
+
+	write(1, "\n### FT ###\t", 12);
+	int	r1 = ft_printf("%p\n", p) - 1;
+
+	write(1, "### OG ###\t", 12);
+	int r2 = printf("%p\n", p) - 1;
+
+	printf("FT: %d\tOG: %d\n", r1 - 1, r2 - 1);
+}
 
 void	hex_mod(unsigned int x)
 {

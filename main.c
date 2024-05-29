@@ -3,6 +3,23 @@
 #include <stdio.h>
 #include <limits.h>
 
+void	ptr_test(void)
+{
+	int	a;
+	int	*b;
+	char *s;
+	long	**l;
+	long	*t;
+
+	l = &t;
+	ptr_mod(NULL);
+	ptr_mod(&a);
+	ptr_mod(&b);
+	ptr_mod(&s);
+	ptr_mod(&l);
+	ptr_mod(l);
+}
+
 void	hex_test(void)
 {
 	hex_mod(0);
@@ -47,5 +64,6 @@ int	main(void)
 	// int_test();
 	// uint_test();
 	// hex_test();
+	ptr_test();
 	return (0);
 }

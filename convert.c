@@ -6,11 +6,12 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:10:36 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 10:08:36 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 13:04:09 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdint.h>
 
 void	convert_nbr(int nb, t_data *data)
 {
@@ -27,9 +28,9 @@ void	convert_nbr(int nb, t_data *data)
 	aux_printc(nbr % 10 + '0', data);
 }
 
-void	convert_nbrbase(unsigned int nbr, char *base, int baselen, t_data *data)
+void	convert_nbrbase(unsigned long nbr, char *base, int baselen, t_data *data)
 {
-	long	nb;
+	unsigned long	nb;
 	char	*str;
 
 	str = NULL;
@@ -40,9 +41,20 @@ void	convert_nbrbase(unsigned int nbr, char *base, int baselen, t_data *data)
 		convert_nbrbase(nbr / baselen, base, baselen, data);
 	aux_printc(base[nbr % baselen], data);
 }
-/*
-void	convert_ptrtoint(va_arg(args, void *), data)
+
+void	convert_ptrtoint(void *ptr, t_data *data)
 {
+	intptr_t	ip;
 
-
-}*/
+	ip = (intptr_t) ptr;
+	if(!ip)
+	{
+		aux_printstr("0x0", data); // test in campus for (nil) or "0x0"
+		return ;
+	}
+	else
+	{
+		aux_printstr("0x", data);
+		convert_nbrbase(ip, "0123456789abcdef", 16, data);
+	}
+}

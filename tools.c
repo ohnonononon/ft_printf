@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:11:54 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 10:07:36 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 12:57:17 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	parse_format(const char *str, char format, t_data *dt, va_list args)
 		convert_nbrbase(va_arg(args, unsigned int), "0123456789abcdef", 16, dt);
 	else if (format == 'X')
 		convert_nbrbase(va_arg(args, unsigned int), "0123456789ABCDEF", 16, dt);
-	// else if (format == 'p')
-	// 	convert_ptrtoint(va_arg(args, void *), dt);
+	else if (format == 'p')
+		convert_ptrtoint(va_arg(args, void *), dt);
 	// else if (format == '%')
 	// 	aux_printc('%', dt);
 	else
