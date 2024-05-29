@@ -1,4 +1,3 @@
 *.a
-test_suite
+suite_test
 **/*.o
-
