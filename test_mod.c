@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:09:31 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 12:59:53 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 15:11:22 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 void	ptr_mod(void *p)
 {
-	char	*tittle = "\nTEST FOR\t";
+	char	*tittle = "\nTEST FOR";
 
 	if (!p)
 		p = 0;
-	printf("%s\t<<%p>>\n", tittle, p);
+	printf("%s	<<%p>>\n", tittle, p);
 
 	write(1, "\n### FT ###\t", 12);
 	int	r1 = ft_printf("%p\n", p) - 1;

@@ -60,10 +60,10 @@ void	print_test(void)
 
 int	main(void)
 {
-	// print_test();
-	// int_test();
-	// uint_test();
-	// hex_test();
+	print_test();
+	int_test();
+	uint_test();
+	hex_test();
 	ptr_test();
 	return (0);
 }

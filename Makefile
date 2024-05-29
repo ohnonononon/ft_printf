@@ -6,7 +6,7 @@
 #    By: nmaturan <nmaturan@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 14:08:04 by nmaturan          #+#    #+#              #
-#    Updated: 2024/05/29 15:05:56 by ohnudes          ###   ########.fr        #
+#    Updated: 2024/05/29 15:11:52 by ohnudes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ DEPS = $(addprefix $(LFT_DIR), $(LIBFT))
 
 #### TEST
 TEST_SRC = test/*.c
-TEST_X = test_suite
+TEST_X = suite_test
 
 #### Compilacion del programa ####
 
