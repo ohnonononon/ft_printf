@@ -1,36 +1,51 @@
+
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
-void	test_mod(char *s)
+void	hex_test(void)
 {
-	char	*tittle = "\nTEST FOR\t";
-
-	if (!s)
-		s = NULL;
-	printf("%s\t<<%s>>\n", tittle, s);
-	write(1, "\n### FT ###\t", 12);
-	int	r1 = ft_printf("%s\n", s);
-	write(1, "### OG ###\t", 12);
-	int r2 = printf("%s\n", s);
-	//
-	// write(1, "ft res\t", 8);
-	// ft_putnbr_fd(r1, 1);
-	// write(1, "\nog res\t\n", 8);
-	// ft_putnbr_fd(r2, 1);
-	// write(1, "\n", 1);
+	hex_mod(0);
+	hex_mod(-123);
+	hex_mod(123);
+	hex_mod(+234);
+	hex_mod(INT_MIN);
+	hex_mod(INT_MAX);
 }
 
-// tests for strings and chars.
+void	uint_test(void)
+{
+	uint_mod(0);
+	uint_mod(-123);
+	uint_mod(123);
+	uint_mod(+234);
+	uint_mod(INT_MIN);
+	uint_mod(INT_MAX);
+}
+
+void	int_test(void)
+{
+	int_mod(0);
+	int_mod(-123);
+	int_mod(123);
+	int_mod(+234);
+	int_mod(INT_MIN);
+	int_mod(INT_MAX);
+}
+
 void	print_test(void)
 {
-	// test_mod("");
-	// test_mod("testeo string normal");
-	// test_mod("\ttabtest\0alo");
-	test_mod(NULL);
+	str_mod("");
+	str_mod("testeo string normal");
+	str_mod("\ttabtest\0alo");
+	str_mod(NULL);
 }
 
 int	main(void)
 {
-	print_test();
+	// print_test();
+	// int_test();
+	// uint_test();
+	// hex_test();
 	return (0);
 }

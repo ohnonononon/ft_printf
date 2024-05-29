@@ -2,7 +2,7 @@ FLAGS = -Wall -Werror -Wextra
 
 INC = ./ft_printf.h
 
-SRC = ft_printf.c tools.c main.c convert.c
+SRC = ft_printf.c tools.c convert.c main.c test_mod.c
 
 TEST = test_suite
 
@@ -10,7 +10,7 @@ all: $(LIBFT)
 	gcc -o $(TEST) $(SRC) -L. -lft
 
 db:
-	gcc -o $(TEST) $(SRC) -L. -lft -g
+	gcc -o $(TEST) $(FLAGS) $(SRC) -L. -lft -g
 	dbg ./$(TEST)
 
 clean:
