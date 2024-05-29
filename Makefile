@@ -6,7 +6,7 @@
 #    By: nmaturan <nmaturan@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 14:08:04 by nmaturan          #+#    #+#              #
-#    Updated: 2024/05/29 14:21:33 by ohnudes          ###   ########.fr        #
+#    Updated: 2024/05/29 15:05:56 by ohnudes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,27 @@ LIBFT = libft.a
 # Deps 
 DEPS = $(addprefix $(LFT_DIR), $(LIBFT)) 
 
+#### TEST
+TEST_SRC = test/*.c
+TEST_X = test_suite
+
 #### Compilacion del programa ####
 
 all: $(NAME) makecheck
+
+test:
+	make -C $(LFT_DIR)
+	gcc -o $(TEST_X) $(TEST_SRC) $(SRC) -L$(LFT_DIR) -lft
+	make -C $(LFT_DIR) clean
 
 $(NAME): $(OBJ) $(DEPS)
 	@echo Creating library: $(NAME)...
 	@cp $(LFT_DIR)$(LIBFT) $(NAME)
 	$(LNK) $@ $(OBJ)
 	@echo Library completed.
+
+$(DEPS):
+	@make -C $(LFT_DIR)
 
 %.o: %.c
 	@echo Compiling $<...
@@ -63,4 +75,4 @@ clean:
 
 re: fclean all
 
-.PHONY: all clean fclean re makecheck
+.PHONY: all clean fclean re makecheck test

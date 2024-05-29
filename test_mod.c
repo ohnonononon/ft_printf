@@ -6,11 +6,11 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:09:31 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 15:06:59 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 12:59:53 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>

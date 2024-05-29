@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:11:54 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 14:09:34 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:54:09 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	aux_printstr(const char *str, t_data *data)
 {
 	if (str == NULL)
 		aux_printstr("(null)", data);
-	else 
+	else
 	{
 		if (data->errctl == -1)
 			return ;
