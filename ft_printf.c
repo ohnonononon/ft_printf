@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:53:18 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/27 12:30:49 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:11:34 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *str, ...)
 			aux_printc(str[i++], &data);
 		else if (str[i] == '%')
 		{
-			parse_format(str, str[++i], &data, args);
+			parse_format(str[++i], &data, args);
 			i++;
 		}
 		if (data.errctl == -1)

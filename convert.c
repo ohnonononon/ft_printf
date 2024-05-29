@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 12:10:36 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 13:04:09 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:10:10 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ void	convert_nbr(int nb, t_data *data)
 
 void	convert_nbrbase(unsigned long nbr, char *base, int baselen, t_data *data)
 {
-	unsigned long	nb;
-	char	*str;
-
-	str = NULL;
-	nb = nbr;
 	if (data->errctl == -1)
 		return ;
 	if (nbr / baselen)

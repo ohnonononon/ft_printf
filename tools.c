@@ -6,7 +6,7 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 20:11:54 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 12:57:17 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:09:34 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ void	aux_printstr(const char *str, t_data *data)
 	}
 }
 
-void	parse_format(const char *str, char format, t_data *dt, va_list args)
+void	parse_format(char format, t_data *dt, va_list args)
 {
-	int	len;
-
-	len = 0;
 	if (dt->errctl == -1)
 		return ;
 	if (format == 'c')
@@ -59,8 +56,8 @@ void	parse_format(const char *str, char format, t_data *dt, va_list args)
 		convert_nbrbase(va_arg(args, unsigned int), "0123456789ABCDEF", 16, dt);
 	else if (format == 'p')
 		convert_ptrtoint(va_arg(args, void *), dt);
-	// else if (format == '%')
-	// 	aux_printc('%', dt);
+	else if (format == '%')
+		aux_printc('%', dt);
 	else
 		dt->errctl = -1;
 }
