@@ -6,16 +6,15 @@
 /*   By: ohnudes </var/spool/mail/ohnudes>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:50:09 by ohnudes           #+#    #+#             */
-/*   Updated: 2024/05/29 14:55:50 by ohnudes          ###   ########.fr       */
+/*   Updated: 2024/05/29 16:24:35 by ohnudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_data
 {
@@ -33,7 +32,7 @@ void	convert_ptrtoint(void *ptr, t_data *data);
 void	parse_format(char format, t_data *data, va_list args);
 int		ft_printf(const char *str, ...);
 
-// testing
+//testing
 void	ptr_test(void);
 void	print_test(void);
 void	int_test(void);
