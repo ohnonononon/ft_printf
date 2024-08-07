@@ -6,7 +6,7 @@
 #    By: nmaturan <nmaturan@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 14:08:04 by nmaturan          #+#    #+#              #
-#    Updated: 2024/05/29 16:25:36 by ohnudes          ###   ########.fr        #
+#    Updated: 2024/08/07 18:49:25 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = libftprintf.a
 
 # Flags al compilar
-FLAGS = -g -Wall -Wextra -Werror 
+FLAGS = -g -Wall -Wextra -Werror
 
 # Flags for linking
 LNK = ar rcs
@@ -23,7 +23,7 @@ LNK = ar rcs
 INC = ft_printf.h
 
 # Functions
-SRC = ft_printf.c tools.c convert.c
+SRC = ft_printf.c printf_tools.c printf_convert.c
 
 # Objects
 OBJ = $(SRC:.c=.o)
@@ -35,18 +35,9 @@ LIBFT = libft.a
 # Deps 
 DEPS = $(addprefix $(LFT_DIR), $(LIBFT)) 
 
-#### TEST
-TEST_SRC = test/*.c
-TEST_X = suite_test
-
 #### Compilacion del programa ####
 
 all: $(NAME) makecheck
-
-test:
-	make -C $(LFT_DIR)
-	gcc -o $(TEST_X) $(TEST_SRC) $(SRC) -L$(LFT_DIR) -lft
-	make -C $(LFT_DIR) clean
 
 $(NAME): $(OBJ) $(DEPS)
 	@echo Creating library: $(NAME)...
@@ -75,4 +66,4 @@ clean:
 
 re: fclean all
 
-.PHONY: all clean fclean re makecheck test
+.PHONY: all clean fclean re makecheck
