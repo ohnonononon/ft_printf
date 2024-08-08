@@ -6,7 +6,7 @@
 #    By: nmaturan <nmaturan@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/21 14:08:04 by nmaturan          #+#    #+#              #
-#    Updated: 2024/08/07 18:49:25 by nimatura         ###   ########.fr        #
+#    Updated: 2024/08/07 21:52:12 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,33 +37,32 @@ DEPS = $(addprefix $(LFT_DIR), $(LIBFT))
 
 #### Compilacion del programa ####
 
-all: $(NAME) makecheck
+all: libs $(NAME)
 
-$(NAME): $(OBJ) $(DEPS)
+$(NAME): $(OBJ)
 	@echo Creating library: $(NAME)...
 	@cp $(LFT_DIR)$(LIBFT) $(NAME)
 	$(LNK) $@ $(OBJ)
 	@echo Library completed.
 
+libs: libft/libft.a
+	make -C $(LFT_DIR)
+
 $(DEPS):
-	@make -C $(LFT_DIR)
+	make -C $(LFT_DIR)
 
 %.o: %.c
 	@echo Compiling $<...
-	@gcc -c $(FLAGS) $< -o $@  
+	@gcc -c $(FLAGS) $< -o $@
 	@echo Compilation completed.
-
-makecheck:
-	@make -C $(LFT_DIR)
-	@make -C . $(NAME)
 
 fclean: clean
 	@rm -f $(NAME)
 
 clean:
-	@make -C $(LFT_DIR) fclean
-	@rm -f $(OBJ)
+	make -C $(LFT_DIR) fclean
+	rm -f $(OBJ)
 
 re: fclean all
 
-.PHONY: all clean fclean re makecheck
+.PHONY: all clean fclean re
