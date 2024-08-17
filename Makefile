@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmaturan <nmaturan@student.42barcel>       +#+  +:+       +#+         #
+#    By: ohnudes <nimatura@student.42barcel>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/21 14:08:04 by nmaturan          #+#    #+#              #
-#    Updated: 2024/08/07 21:52:12 by nimatura         ###   ########.fr        #
+#    Created: 2024/08/17 17:10:54 by ohnudes           #+#    #+#              #
+#    Updated: 2024/08/17 17:18:59 by ohnudes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = libftprintf.a
 
 # Flags al compilar
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 # Flags for linking
 LNK = ar rcs
@@ -32,9 +32,6 @@ OBJ = $(SRC:.c=.o)
 LFT_DIR = libft/
 LIBFT = libft.a
 
-# Deps 
-DEPS = $(addprefix $(LFT_DIR), $(LIBFT)) 
-
 #### Compilacion del programa ####
 
 all: libs $(NAME)
@@ -46,9 +43,6 @@ $(NAME): $(OBJ)
 	@echo Library completed.
 
 libs: libft/libft.a
-	make -C $(LFT_DIR)
-
-$(DEPS):
 	make -C $(LFT_DIR)
 
 %.o: %.c
