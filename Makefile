@@ -6,7 +6,7 @@
 #    By: ohnudes <nimatura@student.42barcel>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/17 17:10:54 by ohnudes           #+#    #+#              #
-#    Updated: 2024/08/17 17:18:59 by ohnudes          ###   ########.fr        #
+#    Updated: 2024/08/18 17:08:30 by nimatura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ OBJ = $(SRC:.c=.o)
 #### LIBFT
 LFT_DIR = libft/
 LIBFT = libft.a
+LFT	= $(addprefix $(LFT_DIR), $(LIBFT))
 
 #### Compilacion del programa ####
 
@@ -42,12 +43,12 @@ $(NAME): $(OBJ)
 	$(LNK) $@ $(OBJ)
 	@echo Library completed.
 
-libs: libft/libft.a
+libs:
 	make -C $(LFT_DIR)
 
-%.o: %.c
+%.o: %.c Makefile $(INC)
 	@echo Compiling $<...
-	@gcc -c $(FLAGS) $< -o $@
+	gcc -c $(FLAGS) $< -o $@
 	@echo Compilation completed.
 
 fclean: clean
@@ -55,6 +56,7 @@ fclean: clean
 
 clean:
 	make -C $(LFT_DIR) fclean
+	rm -f libs
 	rm -f $(OBJ)
 
 re: fclean all
